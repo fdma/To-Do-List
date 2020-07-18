@@ -56,25 +56,32 @@
     </div>
 </section>
 
-
-
-    <form action="index.php" method="post">
-        <input type="text" name="title" placeholder="Название заметки...">
-        <textarea name="text" id="" cols="50" rows="20" class="form-control">Твоя заметочка..</textarea>
+<form action="" method="post">
+    <div class="md-form amber-textarea active-amber-textarea-2">
+        <label for="form16">Твои прекрасные мысли</label><br>
+        <input class="mt-5 form-control" type="text" name="title" placeholder="Название">
+        <textarea name="name" id="form16" class="md-textarea form-control mt-5" rows="3"></textarea><br>
         <input type="submit" class="btn btn-success">
-    </form>
+    </div>
+</form>
 
 <?php
-    $mysqli = new mysqli('localhost', 'root', '', 'to-do');
+
+@$title = $_POST['title'];
+@$name = $_POST['name'];
+@$date = $_POST['date'];
+
+//@$cost = $_POST['cost'];
+
+$mysqli = new mysqli('localhost', 'root', '', 'to-do');
+$query = $mysqli->query("INSERT INTO `posts` (`id`, `title`, `name`, `date`) VALUES (NULL, '$title', '$name', '2020-07-15 00:35:03'); ");
+
+$mysqli->close();
 
 
-    @ $content = $_POST['text'];
-    @$title = $_POST['title'];
-
-
-    $query = "INSERT INTO posts VALUES(null, 'gfdgfdfhdgf', 'fhdufhdhf', Now ) ";
-    $mysqli->query($query);
 ?>
+
+
 
 </body>
 </html>
